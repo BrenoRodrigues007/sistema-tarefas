@@ -1,202 +1,93 @@
-\# Sistema de Tarefas — API REST
+# Sistema de Tarefas — API REST
 
+API REST para gerenciamento de tarefas, desenvolvida com Python, Flask e SQLite.
 
+## Funcionalidades
 
-API REST desenvolvida em Python com Flask e SQLite para gerenciamento de tarefas.
+- Listar todas as tarefas
+- Criar novas tarefas
+- Consultar uma tarefa pelo ID
+- Atualizar o título e o status de conclusão
+- Excluir tarefas
+- Validar os dados recebidos
+- Retornar códigos HTTP apropriados
 
+## Tecnologias
 
+- Python
+- Flask
+- SQLite
+- Git e GitHub
 
-\## Funcionalidades
+## Como executar
 
-
-
-\- Listar todas as tarefas
-
-\- Criar uma nova tarefa
-
-\- Consultar uma tarefa pelo ID
-
-\- Atualizar o título e o status de conclusão de uma tarefa
-
-\- Excluir uma tarefa
-
-\- Validar dados enviados nas requisições
-
-\- Retornar códigos HTTP apropriados para sucesso e erros
-
-
-
-\## Tecnologias utilizadas
-
-
-
-\- Python
-
-\- Flask
-
-\- SQLite
-
-\- Git e GitHub
-
-
-
-\## Como executar o projeto
-
-
-
-\### 1. Clonar o repositório
-
-
+### 1. Clonar o repositório
 
 ```bash
-
-git clone URL\_DO\_REPOSITORIO
-
-cd Sistema-tarefas
-
+git clone https://github.com/BrenoRodrigues007/sistema-tarefas.git
+cd sistema-tarefas
 ```
 
-
-
-Substitua `URL\_DO\_REPOSITORIO` pelo endereço do seu repositório no GitHub.
-
-
-
-\### 2. Criar e ativar o ambiente virtual
-
-
+### 2. Criar e ativar o ambiente virtual
 
 No Windows, usando o CMD:
 
-
-
 ```cmd
-
 python -m venv venv
-
-venv\\Scripts\\activate.bat
-
+venv\Scripts\activate.bat
 ```
 
-
-
-\### 3. Instalar o Flask
-
-
+### 3. Instalar o Flask
 
 ```cmd
-
 pip install Flask
-
 ```
 
-
-
-\### 4. Criar o banco de dados
-
-
+### 4. Criar o banco de dados
 
 ```cmd
-
 python banco.py
-
 ```
 
-
-
-\### 5. Iniciar a API
-
-
+### 5. Iniciar a API
 
 ```cmd
-
 python app.py
-
 ```
 
+A API ficará disponível em `http://127.0.0.1:5000`.
 
-
-A API estará disponível em:
-
-
-
-`http://127.0.0.1:5000`
-
-
-
-\## Endpoints
-
-
+## Endpoints
 
 | Método | Rota | Descrição |
-
 |---|---|---|
-
 | GET | `/` | Verificar se a API está funcionando |
+| GET | `/tarefas` | Listar tarefas |
+| POST | `/tarefas` | Criar tarefa |
+| GET | `/tarefas/<id>` | Consultar tarefa |
+| PUT | `/tarefas/<id>` | Atualizar tarefa |
+| DELETE | `/tarefas/<id>` | Excluir tarefa |
 
-| GET | `/tarefas` | Listar todas as tarefas |
+## Exemplo de criação
 
-| POST | `/tarefas` | Criar uma tarefa |
-
-| GET | `/tarefas/<id>` | Consultar uma tarefa pelo ID |
-
-| PUT | `/tarefas/<id>` | Atualizar uma tarefa |
-
-| DELETE | `/tarefas/<id>` | Excluir uma tarefa |
-
-
-
-\## Exemplo de requisição
-
-
-
-Criar uma tarefa:
-
-
+Envie uma requisição POST para `/tarefas` com o seguinte JSON:
 
 ```json
-
 {
-
-"titulo": "Estudar Python"
-
+  "titulo": "Estudar Python"
 }
-
 ```
 
+O campo `concluida` utiliza `0` para tarefas pendentes e `1` para tarefas concluídas.
 
+## Banco de dados
 
-A tarefa é criada com um identificador automático e com o status de conclusão inicialmente definido como `0`.
+O SQLite armazena as tarefas em uma tabela com os campos `id`, `titulo` e `concluida`. O arquivo do banco de dados é criado pelo script `banco.py`.
 
+## Objetivo
 
+Projeto de portfólio para praticar desenvolvimento de APIs REST, operações CRUD, persistência de dados e validação de requisições.
 
-No campo `concluida`:
-
-\- `0` significa que a tarefa não foi concluída.
-
-\- `1` significa que a tarefa foi concluída.
-
-
-
-\## Banco de dados
-
-
-
-O projeto utiliza SQLite para armazenar as tarefas. A tabela contém os campos `id`, `titulo` e `concluida`.
-
-
-
-\## Objetivo
-
-
-
-Projeto desenvolvido para praticar desenvolvimento de APIs REST, operações CRUD, persistência de dados, validação de requisições e tratamento de códigos HTTP.
-
-
-
-\## Autor
-
-
+## Autor
 
 Breno Rodrigues (Estudante de Engenharia de Software).
-
